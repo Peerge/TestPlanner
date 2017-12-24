@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sample.Testdialog"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <headerText>
+        Fill in the information for the new Contact
+    </headerText>
+    <content>
+        <GridPane vgap="10" hgap="10">
+            <Label text="Test Number: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="testNumberField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Product Thickness: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="productThicknessField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Production Number: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="productionNumberField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Production Date: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="productionDatePicker" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+
+
+        </GridPane>
+    </content>
+
+</DialogPane>
