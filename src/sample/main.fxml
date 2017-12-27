@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <BorderPane fx:id="mainBorderPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <top>
         <VBox>
@@ -29,43 +20,33 @@
         </ListView>
     </left>
     <center>
-       <VBox alignment="CENTER" fillWidth="false" BorderPane.alignment="CENTER">
-           <HBox>
-                <Label text="Test Number: " />
-                <TextArea fx:id="testNumberText" VBox.vgrow="ALWAYS" />
-           </HBox>
-           <HBox>
-                <Label text="Thickness: " />
-                <TextArea fx:id="productThicknessText" prefHeight="191.0" prefWidth="470.0" VBox.vgrow="ALWAYS" />
-           </HBox>
-           <HBox>
-                <Label text="Production Order Number: " />
-                <TextArea fx:id="productionNumberText" VBox.vgrow="ALWAYS" />
-           </HBox>
-           <HBox>
-                <Label text="Production Date: " />
-                <TextArea fx:id="productionDateText" VBox.vgrow="ALWAYS" />
-           </HBox>
-           <HBox>
-                <Label text="First Test Date: " />
-                <TextArea fx:id="firstTestDateText" VBox.vgrow="ALWAYS" />
-           </HBox>
-           <HBox>
-                <Label text="Second Test Date: " />
-                <TextArea fx:id="secondTestDateText" VBox.vgrow="ALWAYS" />
-           </HBox>
-           <HBox>
-                <Label text="Third Test Date: " />
-                <TextArea fx:id="thirdTestDateText" VBox.vgrow="ALWAYS" />
-           </HBox>
-           <HBox>
-                <Label text="Release Date: " />
-                <TextArea fx:id="releaseDateText" VBox.vgrow="ALWAYS" />
-           </HBox>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
+       <GridPane vgap="10" hgap="10">
 
-       </VBox>
+                <Label text="Test Number: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextArea fx:id="testNumberText" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+                <Label text="Thickness: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextArea fx:id="productThicknessText" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Production Order Number: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextArea fx:id="productionNumberText" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+                <Label text="Production Date: " GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                <TextArea fx:id="productionDateText" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <Label text="First Test Date: " GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                <TextArea fx:id="firstTestDateText" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+
+                <Label text="Second Test Date: " GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextArea fx:id="secondTestDateText" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+
+                <Label text="Third Test Date: " GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <TextArea fx:id="thirdTestDateText" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+
+                <Label text="Release Date: " GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                <TextArea fx:id="releaseDateText" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+
+
+       </GridPane>
     </center>
 </BorderPane>
