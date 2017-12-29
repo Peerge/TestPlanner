@@ -27,7 +27,17 @@
             <Label text="Production Date: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
             <DatePicker fx:id="productionDatePicker" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
+            <Label text="First Test Date: " GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="firstTestDatePicker" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
 
+            <Label text="Second Test Date: " GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="secondTestDatePicker" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <Label text="Third Test Date: " GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="thirdTestDatePicker" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+            <Label text="Release Date: " GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="releaseDatePicker" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
 
         </GridPane>
     </content>

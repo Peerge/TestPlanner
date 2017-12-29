@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -90,7 +89,7 @@ public class Controller {
 
         testView.setItems(sortedList);
         testView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        testView.getSelectionModel().selectFirst();
+//        testView.getSelectionModel().selectFirst();
 
         testView.setCellFactory(new Callback<ListView<Test>, ListCell<Test>>() {
             @Override
@@ -123,8 +122,8 @@ public class Controller {
     public void showAddTestDialog() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainBorderPane.getScene().getWindow());
-        dialog.setTitle("Add New Test Item");
-        dialog.setHeaderText("Use this dialog to create a new test item");
+        dialog.setTitle("Add New Test ");
+        dialog.setHeaderText("Use this dialog to create a new test");
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("testdialog.fxml"));
         try {
@@ -148,7 +147,82 @@ public class Controller {
         }
     }
 
+    @FXML
+    public void showEditTestDialog() {
+        Test selectedTest = testView.getSelectionModel().getSelectedItem();
+        if(selectedTest == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No test selected");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select test you want to edit");
+            alert.showAndWait();
+            return;
+        }
+
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+        dialog.setTitle("Edit Test");
+        dialog.setHeaderText("Use this dialog to edit selected test");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("editdialog.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        } catch (IOException e) {
+            System.out.println("Couldn't load the dialog");
+            e.printStackTrace();
+            return;
+        }
+
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Testdialog testdialog = fxmlLoader.getController();
+        testdialog.editTest(selectedTest);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+            testdialog.updateTest(selectedTest);
+
+            testView.setCellFactory(new Callback<ListView<Test>, ListCell<Test>>() {
+                @Override
+                public ListCell<Test> call(ListView<Test> param) {
+                    ListCell<Test> cell = new ListCell<Test>() {
+                        @Override
+                        protected void updateItem(Test item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if(empty) {
+                                setText(null);
+                            } else {
+                                setText(item.getTestNumber());
+                                if(item.getReleaseDate().isBefore(LocalDate.now())) {
+                                    setTextFill(Color.RED);
+                                }else if(item.getThirdTestDate().isBefore(LocalDate.now())){
+                                    if(item.getThirdTestDate() != null) {
+                                        setTextFill(Color.GREEN);
+                                    }
+                                }
+                            }
+                        }
+                    };
+                    return cell;
+                }
+            });
+
+        }
+
+    }
+
     public void deleteTest(Test item) {
+        Test selectedTest = testView.getSelectionModel().getSelectedItem();
+        if(selectedTest == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No test selected");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select test you want to delete");
+            alert.showAndWait();
+            return;
+        }
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete test");
         alert.setHeaderText("Delete test: " + item.getTestNumber());
