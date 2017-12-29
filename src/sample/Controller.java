@@ -29,28 +29,28 @@ public class Controller {
     private ListView<Test> testView;
 
     @FXML
-    private TextArea testNumberText;
+    private Label testNumberText;
 
     @FXML
-    private TextArea productThicknessText;
+    private Label productThicknessText;
 
     @FXML
-    private TextArea productionNumberText;
+    private Label productionNumberText;
 
     @FXML
-    private TextArea productionDateText;
+    private Label productionDateText;
 
     @FXML
-    private TextArea firstTestDateText;
+    private Label firstTestDateText;
 
     @FXML
-    private TextArea secondTestDateText;
+    private Label secondTestDateText;
 
     @FXML
-    private TextArea thirdTestDateText;
+    private Label thirdTestDateText;
 
     @FXML
-    private TextArea releaseDateText;
+    private Label releaseDateText;
 
 
     public void initialize() {
