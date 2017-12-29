@@ -1,8 +1,10 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -159,6 +161,12 @@ public class Controller {
         }
     }
 
+    @FXML
+    public void handleDeleteTest(){
+        Test selectedItem = testView.getSelectionModel().getSelectedItem();
+        deleteTest(selectedItem);
+    }
+
     public void handleKeyPressed(KeyEvent keyEvent) {
         Test selectedTest = testView.getSelectionModel().getSelectedItem();
         if(selectedTest != null) {
@@ -166,6 +174,11 @@ public class Controller {
                 deleteTest(selectedTest);
             }
         }
+    }
+
+    @FXML
+    public void handleExit() {
+        Platform.exit();
     }
 }
 
