@@ -140,7 +140,7 @@ public class Controller {
 
         Optional<ButtonType> result = dialog.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.OK) {
-            Testdialog controller = fxmlLoader.getController();
+            TestDialog controller = fxmlLoader.getController();
             Test newItem = controller.processResults();
 //            System.out.println(newItem);
             testView.getSelectionModel().select(newItem);
@@ -176,7 +176,7 @@ public class Controller {
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
 
-        Testdialog testdialog = fxmlLoader.getController();
+        TestDialog testdialog = fxmlLoader.getController();
         testdialog.editTest(selectedTest);
 
         Optional<ButtonType> result = dialog.showAndWait();

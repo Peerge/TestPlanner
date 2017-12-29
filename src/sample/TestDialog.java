@@ -8,7 +8,7 @@ import sample.datamodel.TestData;
 
 import java.time.LocalDate;
 
-public class Testdialog {
+public class TestDialog {
 
     @FXML
     private TextField testNumberField;
