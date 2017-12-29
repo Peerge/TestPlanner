@@ -91,31 +91,7 @@ public class Controller {
         testView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 //        testView.getSelectionModel().selectFirst();
 
-        testView.setCellFactory(new Callback<ListView<Test>, ListCell<Test>>() {
-            @Override
-            public ListCell<Test> call(ListView<Test> param) {
-                ListCell<Test> cell = new ListCell<Test>() {
-                    @Override
-                    protected void updateItem(Test item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if(empty) {
-                            setText(null);
-                        } else {
-                            setText(item.getTestNumber());
-                            if(item.getReleaseDate().isBefore(LocalDate.now())) {
-                                setTextFill(Color.RED);
-                            }else if(item.getThirdTestDate().isBefore(LocalDate.now())){
-                                if(item.getThirdTestDate() != null) {
-                                    setTextFill(Color.GREEN);
-                                }
-                            }
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
-
+        updateListView();
     }
 
     @FXML
@@ -183,31 +159,7 @@ public class Controller {
         if(result.isPresent() && result.get() == ButtonType.OK) {
             testdialog.updateTest(selectedTest);
 
-            testView.setCellFactory(new Callback<ListView<Test>, ListCell<Test>>() {
-                @Override
-                public ListCell<Test> call(ListView<Test> param) {
-                    ListCell<Test> cell = new ListCell<Test>() {
-                        @Override
-                        protected void updateItem(Test item, boolean empty) {
-                            super.updateItem(item, empty);
-                            if(empty) {
-                                setText(null);
-                            } else {
-                                setText(item.getTestNumber());
-                                if(item.getReleaseDate().isBefore(LocalDate.now())) {
-                                    setTextFill(Color.RED);
-                                }else if(item.getThirdTestDate().isBefore(LocalDate.now())){
-                                    if(item.getThirdTestDate() != null) {
-                                        setTextFill(Color.GREEN);
-                                    }
-                                }
-                            }
-                        }
-                    };
-                    return cell;
-                }
-            });
-
+            updateListView();
         }
 
     }
@@ -253,6 +205,33 @@ public class Controller {
     @FXML
     public void handleExit() {
         Platform.exit();
+    }
+
+    public void updateListView() {
+        testView.setCellFactory(new Callback<ListView<Test>, ListCell<Test>>() {
+            @Override
+            public ListCell<Test> call(ListView<Test> param) {
+                ListCell<Test> cell = new ListCell<Test>() {
+                    @Override
+                    protected void updateItem(Test item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if(empty) {
+                            setText(null);
+                        } else {
+                            setText(item.getTestNumber());
+                            if(item.getReleaseDate().isBefore(LocalDate.now())) {
+                                setTextFill(Color.RED);
+                            }else if(item.getThirdTestDate().isBefore(LocalDate.now())){
+                                if(item.getThirdTestDate() != null) {
+                                    setTextFill(Color.GREEN);
+                                }
+                            }
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
     }
 }
 

@@ -11,6 +11,7 @@ import java.io.IOException;
 
 //TODO 1.Poprawić w dodawaniu testu - zamiast wpisywania grubości płyty ustawić listę do wyboru
 //TODO 2.Dodać komentarz gdy nie ma 3 testu dla cienkich grubości
+//TODO 3.Przy edytowaniu testu, popracować nad datami - np. zeby pierwszy test nie mial daty po 2 tescie itp. oraz podpiąć aby zmiana daty produkcji automatycznie przeliczała daty testów
 
 public class Main extends Application {
 
