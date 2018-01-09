@@ -53,6 +53,9 @@ public class Controller {
     @FXML
     private Label releaseDateText;
 
+    @FXML
+    private Label thirdTestDateTextComment;
+
 
     public void initialize() {
 
@@ -68,11 +71,11 @@ public class Controller {
                     productionDateText.setText(df.format(item.getProductionDate()));
                     firstTestDateText.setText(df.format(item.getFirstTestDate()));
                     secondTestDateText.setText(df.format(item.getSecondTestDate()));
-                    if(item.getThirdTestDate() != null) {
-                        thirdTestDateText.setText(df.format(item.getThirdTestDate()));
-                    } else {
-                        thirdTestDateText.setText("Dla płyt o grubości poniżej 80 mm, testy wykonuje się tylko 2 razy!!!");
+                    thirdTestDateText.setText(df.format(item.getThirdTestDate()));
+                    if((item.getThirdTestDate()) == (item.getSecondTestDate())){
+                        thirdTestDateTextComment.setText("Dla płyt o grubości poniżej 80 mm, testy wykonuje się tylko 2 razy!!!");
                     }
+
                     releaseDateText.setText(df.format(item.getReleaseDate()));
 
                 }

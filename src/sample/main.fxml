@@ -67,6 +67,7 @@
                         <Font name="System Bold" size="14.0" />
                     </font></Label>
                 <Label fx:id="thirdTestDateText" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                <Label fx:id="thirdTestDateTextComment" GridPane.columnIndex="2" GridPane.rowIndex="6" />
 
                 <Label text="Release Date: " GridPane.columnIndex="0" GridPane.rowIndex="7" >
                     <font>
