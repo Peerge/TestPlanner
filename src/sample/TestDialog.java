@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import sample.datamodel.Test;
@@ -37,15 +38,31 @@ public class TestDialog {
 
 
     public Test processResults() {
-        String testNumber = testNumberField.getText().trim();
-        int productThickness = Integer.parseInt(productThicknessField.getText().trim());
-        String productionNumber = productionNumberField.getText().trim();
-        LocalDate productionDate = productionDatePicker.getValue();
+        try {
+            String testNumber = testNumberField.getText().trim();
+            int productThickness = Integer.parseInt(productThicknessField.getText().trim());
+            String productionNumber = productionNumberField.getText().trim();
+            LocalDate productionDate = productionDatePicker.getValue();
 
-        Test newItem = new Test(testNumber, productThickness, productionNumber,productionDate);
-        TestData.getInstance().addTest(newItem);
+            Test newItem = new Test(testNumber, productThickness, productionNumber, productionDate);
+            TestData.getInstance().addTest(newItem);
 //        System.out.println(newItem);
-        return newItem;
+            return newItem;
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Wrong product thickness format");
+            alert.setHeaderText(null);
+            alert.setContentText("Please type product thicknes as a numeric value e.g. 120");
+            alert.showAndWait();
+            return null;
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty Fields!!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please type all the information needed in correct format");
+            alert.showAndWait();
+            return null;
+        }
     }
 
     public void updateTest(Test test) {

@@ -17,15 +17,20 @@
         <GridPane vgap="10" hgap="10">
             <Label text="Test Number: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
             <TextField fx:id="testNumberField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="(e.g. T13s1)" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
 
             <Label text="Product Thickness: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
             <TextField fx:id="productThicknessField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="(e.g. 40, 50, 60, 80, 100, 120, 140)" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
 
             <Label text="Production Number: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
             <TextField fx:id="productionNumberField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="(e.g. 321455)" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
 
             <Label text="Production Date: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
             <DatePicker fx:id="productionDatePicker" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label text="(yyyy-mm-dd e.g.2017-12-03)" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
 
 
 

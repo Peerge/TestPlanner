@@ -117,7 +117,12 @@ public class Controller {
         Optional<ButtonType> result = dialog.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.OK) {
             TestDialog controller = fxmlLoader.getController();
+
             Test newItem = controller.processResults();
+            if(newItem == null) {
+                showAddTestDialog();
+            }
+
 //            System.out.println(newItem);
             testView.getSelectionModel().select(newItem);
         }
